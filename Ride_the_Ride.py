@@ -10,4 +10,3 @@ if height >= 3:
 	print("\n\nYou are tall enough to ride this ride, "+name+". You are "+str(age)+" after all")
 else:
 	print("\n\nYou are not tall enough, "+name+". You are only "+str(age)+". come back in a few years.")
-	#This means it was committed properly
