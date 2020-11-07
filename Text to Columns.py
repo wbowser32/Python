@@ -1,1 +1,1 @@
-#Will make a text to columns function with arrays
+#Will make a text to columns with arrays by certain characters
