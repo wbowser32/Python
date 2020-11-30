@@ -16,12 +16,22 @@ for label, row in data.iterrows():
     I = row["MerchantOrderItemID"]
     J = row["SKU"]
     K = row["Quantity"]
-    template = "<?xml version=""1.0"" encoding=""UTF-8""?> \n\
+    L = ""
+    for character in C:
+        if character.isalnum():
+            L += character
+    P = list(L)
+    P[16] = "6"
+    O = "".join(P)
+    M = list(C)
+    M[21] = "6"
+    N = "".join(M)
+    template = "<?xml version= \"1.0\" encoding= \"UTF-8\"?> \n\
         <MercentFeed> \n\
          <OrderFulfillment> \n\
          <ChannelOrderID>{}</ChannelOrderID> \n\
          <ChannelName>{}</ChannelName> \n\
-         <FulfillmentDate>{}-06:00</FulfillmentDate> \n\
+         <FulfillmentDate>{}</FulfillmentDate> \n\
          <FulfillmentData> \n\
           <Carrier>{}</Carrier> \n\
           <ShippingTrackingNumber>{}</ShippingTrackingNumber> \n\
@@ -35,8 +45,8 @@ for label, row in data.iterrows():
            <Quantity>{}</Quantity> \n\
           </Item> \n\
          </OrderFulfillment> \n\
-        </MercentFeed>".format(A, B, C, D, E, F, G, H, I, J, K)
-    filename = "C:\\Users\\BowDa001\\Desktop\\New File\\OrderAdjustment_{}_{}_{}.xml".format(B, A, C)
+        </MercentFeed>".format(A, B, N, D, E, F, G, H, I, J, K)
+    filename = "C:\\Users\\BowDa001\\Desktop\\New File\\OrderFulfillment_{}_{}_{}.xml".format(B, A, O)
     file = open(filename, "x")
     file.write(template)
     file.close
