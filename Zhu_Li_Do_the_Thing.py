@@ -1,7 +1,21 @@
 import pandas as pd
+import PySimpleGUI as sg
 #ChannelOrderID	ChannelName	FulfillmentDate	Carrier	ShippingTrackingNumber	ShippingMethod	ShippingTrackingURL	ChannelOrderItemID	MerchantOrderItemID	SKU	Quantity
+sg.theme("DarkTeal2")
+layout = [[sg.T("")],
+          [sg.Text("Choose a file: "), sg.Input(key="-IN2-", change_submits=True), sg.FileBrowse(key="-IN-")],
+          [sg.Button('Submit'), sg.Cancel()]]
+window = sg.Window('What File are You Using', layout, size=(600, 150))
+while True:
+    event, values = window.read()
+    #print(values["-IN2-"])
+    if event == sg.WIN_CLOSED or event == "Exit" or event == "Cancel":
+        break
+    elif event == "Submit":
+        window.close()
+        path = values["-IN-"]
+        break
 
-path = "C:\\Users\\BowDa001\\Desktop\\New File\\BaseFile.xlsx"
 data = pd.read_excel(path)
 
 for label, row in data.iterrows():
@@ -49,4 +63,4 @@ for label, row in data.iterrows():
     filename = "C:\\Users\\BowDa001\\Desktop\\New File\\OrderFulfillment_{}_{}_{}.xml".format(B, A, O)
     file = open(filename, "x")
     file.write(template)
-    file.close
+    file.close()
