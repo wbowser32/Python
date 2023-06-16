@@ -1,0 +1,16 @@
+Dict3 = {'Claims': {1: 'abcd', 2: 'claims', 3: 'problems'}, 'Employees': {1: 'client', 2: 'Enrollee', 3: 'policy'}, 'Lapse': {1: 'overdue', 2: 'abcd', 3: 'release'}}
+Keywords = []
+q = 'How many claims does abcd have?'
+q = ''.join(e for e in q if e == ' ' or e.isalnum())
+print(q)
+InputString = q.split(" ")
+print(InputString)
+for key in Dict3:
+    for num in (Dict3[key]):
+        for words in InputString:
+            if(Dict3[key][num] == words.lower()):
+                Keywords.append(key)
+res = [i for n, i in enumerate(Keywords) if i not in Keywords[:n]]
+#res = list(OrderedDict.fromkeys(Keywords))
+print(Keywords)
+print(res)
